@@ -15,7 +15,15 @@ app.get("/", (req, res) => {
     res.render("index");
 });
 
+app.get("/add", (req, res) => {
+    res.render("add");
+});
+
+app.get("/about", (req, res) => {
+    res.render("about");
+});
+
 //Starta
 app.listen(port, () => {
-console.log(`Server started on port: ${port}`);
+    console.log(`Server started on port: ${port}`);
 });

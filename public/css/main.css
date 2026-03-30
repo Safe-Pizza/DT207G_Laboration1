@@ -74,6 +74,10 @@ footer {
     nav ul li {
         max-width: 100%;
     }
+
+    .container-hamburger {
+        background-color: #35431d;
+    }
     #hamburger-menu {
         display: inline-block;
         cursor: pointer;
