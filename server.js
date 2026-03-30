@@ -12,7 +12,7 @@ app.use(express.static("public"));
 
 //Route
 app.get("/", (req, res) => {
-    res.send("Hello from express");
+    res.render("index");
 });
 
 //Starta
