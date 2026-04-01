@@ -1,7 +1,28 @@
 "use strict";
 
-//Eventlyssnare för hamburgermeny
-document.querySelector("#hamburger-menu").addEventListener("click", toggleMenu);
+document.addEventListener("DOMContentLoaded", () => {
+
+    //Eventlyssnare för hamburgermeny
+    document.querySelector("#hamburger-menu").addEventListener("click", toggleMenu);
+
+    //kontroll och switch för page-indicator
+    const pathName = window.location.pathname;
+
+    switch(pathName) {
+        case "/":
+            document.querySelector(".index-page").classList.add("current-page");
+            break;
+        case "/add":
+            document.querySelector(".add-page").classList.add("current-page");
+            break;
+        case "/about":
+            document.querySelector(".about-page").classList.add("current-page");
+            break;
+        default:
+            console.log("Något gick fel");
+    }
+
+});
 
 //togglefunktion för hamburgermeny
 function toggleMenu() {
