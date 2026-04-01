@@ -15,19 +15,29 @@
         <%- include("partials/header") %>
         <main>
             <h1>Lägg till kurs</h1>
+
+            <% if(locals.errors.length > 0) { %>
+                <ul>
+                <% errors.forEach((error) => { %>
+                    <li>
+                        <%= error %>
+                    </li>
+                <% }); %>
+                </ul>
+            <% }; %>
             <div id="form-course">
-                <form id="add-course">
+                <form id="add-course" method="post">
                     <label for="code">Kurskod:</label><br>
-                    <input type="text" id="code" name="add-code">
+                    <input type="text" id="code" name="coursecode" value="<%= courseCode %>">
                     <br>
                     <label for="name">Kursnamn:</label><br>
-                    <input type="text" id="name" name="add-name">
+                    <input type="text" id="name" name="coursename" value="<%= courseName %>">
                     <br>
-                    <label for="progression">Progression:</label><br>
-                    <input type="text" id="prog" name="add-prog">
+                    <label for="prog">Progression:</label><br>
+                    <input type="text" id="prog" name="courseprogression" value="<%= progression %>">
                     <br>
-                    <label for="syllabus">URL:</label><br>
-                    <input type="text" id="syllabus" name="add-syllabus">
+                    <label for="syll">URL:</label><br>
+                    <input type="text" id="syll" name="coursesyllabus" value="<%= syllabus %>">
                     <br>
                     <input type="submit" value="Spara kurs">
                 </form>
