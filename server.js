@@ -5,6 +5,10 @@ const app = express();
 const port = 3000;
 const bodyParser = require("body-parser");
 
+//Anslutning databas
+const sqlite3 = require("sqlite3").verbose();
+const db = new sqlite3.Database("./db/courses.db");
+
 //view-engine
 app.set("view engine", "ejs");
 
@@ -49,6 +53,14 @@ app.post("/add", async (req, res) => {
         errors.push("Du måste ange progression");
     }; if (syllabus === "") {
         errors.push("Du måste ange webbadress");
+    };
+
+    if(errors.length === 0) {
+        const dbInput = db.prepare(`INSERT INTO course(course_code, course_name, course_progression, course_syllabus)VALUES(?,?,?,?);`);
+        dbInput.run(courseCode, courseName, progression, syllabus);
+        dbInput.finalize();
+
+        db.close();
     };
 
     res.render("add", {
