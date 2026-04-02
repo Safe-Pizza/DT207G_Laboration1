@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 
 //Anslutning databas
 const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database("./db/courses.db");
 
 //view-engine
 app.set("view engine", "ejs");
@@ -80,6 +79,8 @@ app.post("/add", async (req, res) => {
         dbInput.finalize();
 
         db.close();
+
+        res.render("/");
     };
 
     res.render("add", {
