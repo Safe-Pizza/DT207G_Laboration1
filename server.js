@@ -7,6 +7,7 @@ const bodyParser = require("body-parser");
 
 //Anslutning databas
 const sqlite3 = require("sqlite3").verbose();
+const db = new sqlite3.Database("./db/courses.db");
 
 //view-engine
 app.set("view engine", "ejs");
@@ -34,10 +35,10 @@ app.get("/add", async (req, res) => {
 
 app.post("/add", async (req, res) => {
     //lagra formulärdata
-    const courseCode = req.body.coursecode;
-    const courseName = req.body.coursename;
-    const progression = req.body.courseprogression;
-    const syllabus = req.body.coursesyllabus;
+    let courseCode = req.body.coursecode;
+    let courseName = req.body.coursename;
+    let progression = req.body.courseprogression;
+    let syllabus = req.body.coursesyllabus;
 
     //tom array för felmeddelanden
     let errors = [];
@@ -62,7 +63,7 @@ app.post("/add", async (req, res) => {
     if (progression === "") {
         errors.push("Du måste ange progression");
     };
-    if(progression.toUpperCase() !== "A" && progression.toUpperCase() !== "B" && progression.toUpperCase() !== "C") {
+    if (progression.toUpperCase() !== "A" && progression.toUpperCase() !== "B" && progression.toUpperCase() !== "C") {
         errors.push("Progression kan endast vara A, B eller C");
     };
     if (syllabus === "") {
@@ -74,13 +75,18 @@ app.post("/add", async (req, res) => {
     };
 
     if (errors.length === 0) {
+        //SQL-fråga
         const dbInput = db.prepare(`INSERT INTO course(course_code, course_name, course_progression, course_syllabus)VALUES(?,?,?,?);`);
         dbInput.run(courseCode, courseName, progression, syllabus);
         dbInput.finalize();
 
         db.close();
 
-        res.render("/");
+        //Nollställ formulärdata
+        courseCode = "";
+        courseName = "";
+        progression = "";
+        syllabus = "";
     };
 
     res.render("add", {
