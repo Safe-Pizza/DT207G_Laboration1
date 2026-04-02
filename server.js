@@ -40,7 +40,18 @@ app.post("/add", async (req, res) => {
     const progression = req.body.courseprogression;
     const syllabus = req.body.coursesyllabus;
 
+    //tom array för felmeddelanden
     let errors = [];
+
+    //funktion för kontroll av korrekt url
+    function isUrlValid(url) {
+        try {
+            new URL(url);
+            return true;
+        } catch (e) {
+            return false;
+        }
+    };
 
     //validera formulärdata
     if (courseCode === "") {
@@ -51,11 +62,19 @@ app.post("/add", async (req, res) => {
     };
     if (progression === "") {
         errors.push("Du måste ange progression");
-    }; if (syllabus === "") {
+    };
+    if(progression.toUpperCase() !== "A" && progression.toUpperCase() !== "B" && progression.toUpperCase() !== "C") {
+        errors.push("Progression kan endast vara A, B eller C");
+    };
+    if (syllabus === "") {
         errors.push("Du måste ange webbadress");
     };
 
-    if(errors.length === 0) {
+    if (isUrlValid(syllabus) === false) {
+        errors.push("Webbadressen är inte giltig");
+    };
+
+    if (errors.length === 0) {
         const dbInput = db.prepare(`INSERT INTO course(course_code, course_name, course_progression, course_syllabus)VALUES(?,?,?,?);`);
         dbInput.run(courseCode, courseName, progression, syllabus);
         dbInput.finalize();
