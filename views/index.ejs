@@ -13,13 +13,30 @@
 <body>
     <div class="container">
         <%- include("partials/header") %>
-        <main>
-            <h1>Startsida</h1>
-            <p>Lite text här om sidan</p>
-        </main>
-        <footer>
-            <p>Skapad av Hanna Lindkvist</p>
-        </footer>
+            <main>
+                <h1>Startsida</h1>
+                <p>Lite text här om sidan</p>
+                <div class="my-courses">
+                    <table id="stored-courses">
+                        <thead>
+                            <tr>
+                                <th id="courseCode">Kurskod</th>
+                                <th id="courseName">Kursnamn</th>
+                                <th id="courseProg">Progression</th>
+                                <th id="courseSyll">Kursplan</th>
+                                <th id="remove-course">Ta bort</th>
+                            </tr>
+                        </thead>
+                        <tbody id="table-data">
+
+                        </tbody>
+
+                    </table>
+                </div>
+            </main>
+            <footer>
+                <p>Skapad av Hanna Lindkvist</p>
+            </footer>
     </div> <!--Container slut-->
 </body>
 

@@ -56,6 +56,30 @@ main {
     padding: 1em;
 }
 
+/*Tabell-styling*/
+table {
+    margin-bottom: 1em;
+    background-color: rgba(255, 255, 255, 0.604);
+    width: 100%;
+    max-width: 100%;
+    text-align: left;
+    letter-spacing: 0.8px;
+    padding: 1em;
+    border-radius: 10px;
+    box-shadow: 3px 3px 5px rgba(0, 0, 0, 0.4),
+        -3px -3px 5px rgba(0, 0, 0, 0.4);
+    color: rgb(0, 0, 0);
+}
+
+thead {
+    color: #35431d;
+}
+
+td {
+    border-bottom: 1px solid rgb(43, 43, 43);
+    padding: 5px;
+}
+
 footer {
     padding: 1em;
     background-color: #35431d;
@@ -65,6 +89,7 @@ footer {
     body {
         font-size: 1em;
     }
+
     /*navigation*/
     nav ul {
         display: flex;
@@ -78,6 +103,7 @@ footer {
     .container-hamburger {
         background-color: #35431d;
     }
+
     #hamburger-menu {
         display: inline-block;
         cursor: pointer;
