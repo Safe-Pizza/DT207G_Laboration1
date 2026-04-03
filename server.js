@@ -27,8 +27,6 @@ app.get("/", async (req, res) => {
     db.all(selectQuery, (err, data) => {
         if (err) return;
 
-        // Success
-        console.log(data);
         res.render("index", { courses: data });
         db.close();
     });

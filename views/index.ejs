@@ -29,7 +29,7 @@
                         </thead>
                         <tbody id="table-data">
                             <% courses.forEach(d=> { %>
-                                <tr>
+                                <tr id="<%= d.course_code %>">
                                     <td>
                                     <%= d.course_code %>
                                     </td>
@@ -40,13 +40,9 @@
                                     <%= d.course_progression %>
                                     </td>
                                     <td>
-                                        <a href="
-                                    <%= d.course_syllabus %>
-                                    ">Kursplan</a>
+                                        <a href="<%= d.course_syllabus %>">Kursplan</a>
                                     </td>
-                                    <td id ="
-                                    <%= d.id %>
-                                    " class="remove-link">
+                                    <td id ="<%= d.id %>" class="remove-link">
                                     X
                                     </td>
                                 </tr>

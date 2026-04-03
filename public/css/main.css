@@ -80,6 +80,14 @@ td {
     padding: 5px;
 }
 
+.remove-link {
+    font-size: 1.2em;
+    text-align: center;
+    color: red;
+    font-weight: bold;
+    cursor: pointer;
+}
+
 footer {
     padding: 1em;
     background-color: #35431d;
