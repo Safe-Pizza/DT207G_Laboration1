@@ -7,7 +7,6 @@ const bodyParser = require("body-parser");
 
 //Anslutning databas
 const sqlite3 = require("sqlite3").verbose();
-const db = new sqlite3.Database("./db/courses.db");
 
 //view-engine
 app.set("view engine", "ejs");
@@ -20,7 +19,19 @@ app.use(express.urlencoded({ extended: true }));
 
 //Route
 app.get("/", async (req, res) => {
-    res.render("index");
+
+    //Öppna databas
+    const db = new sqlite3.Database("./db/courses.db");
+    //SQL-fråga
+    const selectQuery = `SELECT * FROM course;`;
+    db.all(selectQuery, (err, data) => {
+        if (err) return;
+
+        // Success
+        console.log(data);
+        res.render("index", { courses: data });
+        db.close();
+    });
 });
 
 app.get("/add", async (req, res) => {
@@ -75,11 +86,12 @@ app.post("/add", async (req, res) => {
     };
 
     if (errors.length === 0) {
+        //Öpnna databas
+        const db = new sqlite3.Database("./db/courses.db");
         //SQL-fråga
         const dbInput = db.prepare(`INSERT INTO course(course_code, course_name, course_progression, course_syllabus)VALUES(?,?,?,?);`);
         dbInput.run(courseCode, courseName, progression, syllabus);
         dbInput.finalize();
-
         db.close();
 
         //Nollställ formulärdata

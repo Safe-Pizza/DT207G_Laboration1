@@ -28,9 +28,30 @@
                             </tr>
                         </thead>
                         <tbody id="table-data">
-
+                            <% courses.forEach(d=> { %>
+                                <tr>
+                                    <td>
+                                    <%= d.course_code %>
+                                    </td>
+                                    <td>
+                                    <%= d.course_name %>
+                                    </td>
+                                    <td>
+                                    <%= d.course_progression %>
+                                    </td>
+                                    <td>
+                                        <a href="
+                                    <%= d.course_syllabus %>
+                                    ">Kursplan</a>
+                                    </td>
+                                    <td id ="
+                                    <%= d.id %>
+                                    " class="remove-link">
+                                    X
+                                    </td>
+                                </tr>
+                                <% }); %>
                         </tbody>
-
                     </table>
                 </div>
             </main>
