@@ -80,6 +80,10 @@ td {
     padding: 5px;
 }
 
+table a {
+    color: darkmagenta;
+}
+
 #remove-course {
     text-align: center;
 }
@@ -97,6 +101,27 @@ td {
     justify-content: center;
 }
 
+input {
+    padding: 1em;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+input[type=submit] {
+  padding: 1em;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  width: 150px;
+  border-radius: 5px;
+  background-color: #35431d;
+  color: white;
+  cursor: pointer;
+}
+
+input[type=submit]:active {
+    background-color: #556b2f;
+}
+
 footer {
     padding: 1em;
     background-color: #35431d;
@@ -104,7 +129,7 @@ footer {
 
 @media screen and (max-width: 600px) {
     body {
-        font-size: 1em;
+        font-size: 0.8em;
     }
 
     /*navigation*/
@@ -153,5 +178,9 @@ footer {
 
     .change .bar3 {
         transform: translate(0, -11px) rotate(45deg);
+    }
+
+    table {
+        font-size: 0.8em;
     }
 }
