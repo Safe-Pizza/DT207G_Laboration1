@@ -33,7 +33,7 @@ app.get("/", async (req, res) => {
             db.close();
         });
     };
-    
+
     readData();
 });
 

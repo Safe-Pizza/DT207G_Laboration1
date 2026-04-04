@@ -108,14 +108,14 @@ input {
 }
 
 input[type=submit] {
-  padding: 1em;
-  margin-top: 1em;
-  margin-bottom: 1em;
-  width: 150px;
-  border-radius: 5px;
-  background-color: #35431d;
-  color: white;
-  cursor: pointer;
+    padding: 1em;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    width: 150px;
+    border-radius: 5px;
+    background-color: #35431d;
+    color: white;
+    cursor: pointer;
 }
 
 input[type=submit]:active {
