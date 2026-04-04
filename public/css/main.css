@@ -80,12 +80,21 @@ td {
     padding: 5px;
 }
 
+#remove-course {
+    text-align: center;
+}
+
 .remove-link {
     font-size: 1.2em;
-    text-align: center;
     color: red;
     font-weight: bold;
     cursor: pointer;
+    text-decoration: none;
+}
+
+.remove {
+    display: flex;
+    justify-content: center;
 }
 
 footer {

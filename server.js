@@ -19,17 +19,22 @@ app.use(express.urlencoded({ extended: true }));
 
 //Route
 app.get("/", async (req, res) => {
-
-    //Öppna databas
-    const db = new sqlite3.Database("./db/courses.db");
-    //SQL-fråga
-    const selectQuery = `SELECT * FROM course;`;
-    db.all(selectQuery, (err, data) => {
-        if (err) return;
-
-        res.render("index", { courses: data });
-        db.close();
-    });
+    async function readData() {
+        //Öppna databas
+        const db = new sqlite3.Database("./db/courses.db");
+        //SQL-fråga
+        const selectQuery = `SELECT * FROM course;`;
+        //Skicka SQL-fråga
+        db.all(selectQuery, (err, data) => {
+            if (err) return;
+            //Skicka data till index-sida
+            res.render("index", { courses: data });
+            //Stäng databas
+            db.close();
+        });
+    };
+    
+    readData();
 });
 
 app.get("/add", async (req, res) => {
@@ -113,7 +118,21 @@ app.get("/about", async (req, res) => {
     res.render("about");
 });
 
+app.get("/delete", async (req, res) => {
+    const courseId = req.query.courseid;
+
+    //Öpnna databas
+    const db = new sqlite3.Database("./db/courses.db");
+    //SQL-fråga
+    const dbInput = db.prepare(`DELETE FROM course WHERE id=(?);`);
+    dbInput.run(courseId);
+    dbInput.finalize();
+    db.close();
+
+    res.redirect("/");
+})
+
 //Starta
-app.listen(port, () => {
+app.listen(port, async () => {
     console.log(`Server started on port: ${port}`);
 });

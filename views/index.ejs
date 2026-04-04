@@ -31,19 +31,18 @@
                             <% courses.forEach(d=> { %>
                                 <tr id="<%= d.course_code %>">
                                     <td>
-                                    <%= d.course_code %>
+                                        <%= d.course_code %>
                                     </td>
                                     <td>
-                                    <%= d.course_name %>
+                                        <%= d.course_name %>
                                     </td>
                                     <td>
-                                    <%= d.course_progression %>
+                                        <%= d.course_progression %>
                                     </td>
                                     <td>
                                         <a href="<%= d.course_syllabus %>">Kursplan</a>
                                     </td>
-                                    <td id ="<%= d.id %>" class="remove-link">
-                                    X
+                                    <td class="remove"><a class="remove-link" href="/delete?courseid=<%= d.id %>">X</a>
                                     </td>
                                 </tr>
                                 <% }); %>
@@ -52,7 +51,7 @@
                 </div>
             </main>
             <footer>
-                <p>Skapad av Hanna Lindkvist</p>
+                <p>Skapad av Hanna Lindkvist, 2026</p>
             </footer>
     </div> <!--Container slut-->
 </body>
