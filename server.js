@@ -2,7 +2,7 @@
 
 const express = require("express");
 const app = express();
-const port = 3000;
+const port = process.env.port || 3000;
 const bodyParser = require("body-parser");
 
 //Anslutning databas
@@ -133,6 +133,6 @@ app.get("/delete", async (req, res) => {
 })
 
 //Starta
-app.listen(port, async () => {
-    console.log(`Server started on port: ${port}`);
+app.listen(port, () => {
+    console.log(`Server running`);
 });
