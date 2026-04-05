@@ -81,7 +81,15 @@ td {
 }
 
 table a {
+    color: rgb(39, 0, 139);
+}
+
+table a:visited {
     color: darkmagenta;
+}
+
+table a:hover {
+    color: rgb(111, 60, 240);
 }
 
 #remove-course {
@@ -94,6 +102,10 @@ table a {
     font-weight: bold;
     cursor: pointer;
     text-decoration: none;
+}
+
+.remove-link:hover {
+    color: rgb(175, 4, 4);
 }
 
 .remove {
